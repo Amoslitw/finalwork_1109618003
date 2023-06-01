@@ -16,6 +16,7 @@
 import os
 import sys
 import phonetic as pn  
+import FashionSentence as fs
 from argparse import ArgumentParser
 
 from flask import Flask, request, abort
@@ -66,7 +67,7 @@ def callback():
         if not isinstance(event.message, TextMessage):
             continue
 
-        result = pn.read ( event.message.text )
+        result = fs.read ( event.message.text )
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=result)
